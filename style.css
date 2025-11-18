@@ -1,0 +1,227 @@
+/* Estilo Base e Variáveis */
+:root {
+    --cor-principal: #007bff;
+    --cor-secundaria: #0056b3;
+    --cor-fundo: #f4f7f6;
+    --cor-texto: #333;
+    --cor-sucesso: #28a745;
+    --cor-erro: #dc3545;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    padding-bottom: 50px;
+}
+
+/* Estrutura Semântica */
+header {
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.8em;
+}
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #ddd;
+    color: var(--cor-texto);
+    font-size: 0.8em;
+    margin-top: 30px;
+}
+
+/* Estilo de Botões */
+.botao-novo, .botao-principal {
+    display: inline-block;
+    background-color: var(--cor-sucesso);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botao-novo:hover, .botao-principal:hover {
+    background-color: #1e7e34;
+}
+
+/* Estilos de Mensagens */
+.mensagem-sucesso, .mensagem-erro {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.mensagem-sucesso {
+    background-color: #d4edda;
+    color: var(--cor-sucesso);
+    border: 1px solid #c3e6cb;
+}
+.mensagem-erro {
+    background-color: #f8d7da;
+    color: var(--cor-erro);
+    border: 1px solid #f5c6cb;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #eee;
+    font-weight: bold;
+    color: var(--cor-secundaria);
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.botao-acao {
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-right: 5px;
+    font-size: 0.9em;
+}
+.editar {
+    background-color: var(--cor-principal);
+    color: white;
+}
+.excluir {
+    background-color: var(--cor-erro);
+    color: white;
+}
+
+/* Formulário */
+fieldset {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0 10px;
+    color: var(--cor-secundaria);
+}
+.campo {
+    margin-bottom: 15px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input[type="text"], input[type="number"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.erro-validacao {
+    color: var(--cor-erro);
+    font-size: 0.9em;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav {
+        margin-top: 10px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+    td::before {
+        content: attr(data-label); 
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+    td:last-child {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .campo-grupo {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .campo-grupo {
+        display: flex;
+        gap: 20px;
+    }
+    .campo-grupo .campo {
+        flex: 1;
+    }
+}
